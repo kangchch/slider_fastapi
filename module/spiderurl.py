@@ -32,7 +32,7 @@ class SpiderUrl(object):
         try:
             # res = rq.get(jurl, headers=self.headers)
             self.broswer.get(jurl)
-            self.broswer.implicitly_wait(10)
+            self.broswer.implicitly_wait(20)
             rdom = random.uniform(0, 0.6)
             sp = round(rdom, self.C)
             time.sleep(sp)
@@ -44,4 +44,4 @@ class SpiderUrl(object):
                 page_source = self.slider.run(self.broswer, jurl)
                 return {'result': page_source}
         except Exception as e:
-            logger.error(f'get error: {str(e)}')
+            logger.error(f'get error: {jurl} - {str(e)}')
